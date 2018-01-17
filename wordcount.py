@@ -76,8 +76,19 @@ def print_words(filename):
     print('key:', k, 'value:', v)
 
 
+def my_function(key_tuple):
+  """A key function to return last element of the tuple provided by caller"""
+  return key_tuple[-1]
+    
 def print_top(filename):
-  my_dict = word_count(filename)
+  """Display top 20 most common words"""
+  my_dict = word_count(filename)  
+  # sorted function on dictionary returns a dictionary where each element is a tuple of key and value
+  #key helps in sorting on the basis of value and reverse=True returns words with greater count on top
+  items = sorted(my_dict.items(), key=my_function, reverse=True)  
+
+  for item in items[:21]:
+      print('key:', item[0], 'value:', item[1])
 
 ###
 
