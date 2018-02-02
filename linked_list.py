@@ -27,9 +27,12 @@ class LinkedList:
         return self.__tail
     
     def add(self,data):
-        self.new_node = Node(data)
-        self.new_node.set_next(self.__head)
-        self.__head = self.new_node
+        new_node=Node(data)
+        if(self.__head is None):
+            self.__head=self.__tail=new_node
+        else:
+            self.__tail.set_next(new_node)
+            self.__tail=new_node
         
     def display(self):
         """head is at the last object added. get_next gives the address of next added object because this is how it was saved."""
